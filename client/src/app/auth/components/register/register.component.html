@@ -1,6 +1,6 @@
 <div class="register-container">
   <div class="form-container">
-    <h2>Sign Up to Eccom</h2>
+    <h2>Sign Up to {{_brand.name}}</h2>
     <nz-alert
       *ngIf="errorMessage"
       nzShowIcon
@@ -58,7 +58,7 @@
         </div>
         <div class="checkbox-container">
           <input nz-input type="checkbox" />
-          <span> I agree to Eccom's Terms of Use & Privacy Policy</span>
+          <span> I agree to {{_brand.name}}'s Terms of Use & Privacy Policy</span>
         </div>
       </div>
       <div class="cta-container">

@@ -3,6 +3,7 @@ import { HostListener } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 import { TokenStorageService } from '../services/token-storage.service';
+import {BrandService} from "../services/brand.service";
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private _token: TokenStorageService,
     private _auth: AuthService,
-    private _cart: CartService
+    private _cart: CartService,
+    public _brand: BrandService
   ) {
     this.getScreenSize();
     this._auth.user.subscribe((user) => {

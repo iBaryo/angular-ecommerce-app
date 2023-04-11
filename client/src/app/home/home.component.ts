@@ -7,6 +7,7 @@ import {
 import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 import { Products, Product } from '../shared/models/product.model';
+import {BrandService} from "../services/brand.service";
 
 @Component({
   selector: 'app-home',
@@ -33,7 +34,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private _brandService: BrandService
   ) {}
 
   public screenWidth: any;
@@ -50,7 +52,7 @@ export class HomeComponent implements OnInit {
     this.screenHeight = window.innerHeight;
     this.loading = true;
     setTimeout(() => {
-      this.productService.getAllProducts(9, this.productPageCounter).subscribe(
+      this.productService.getAllProducts(9, this.productPageCounter, this._brandService.category).subscribe(
         (res: any) => {
           console.log(res);
           this.products = res;
@@ -68,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.additionalLoading = true;
     this.productPageCounter = this.productPageCounter + 1;
     setTimeout(() => {
-      this.productService.getAllProducts(9, this.productPageCounter).subscribe(
+      this.productService.getAllProducts(9, this.productPageCounter, this._brandService.category).subscribe(
         (res: any) => {
           console.log(res);
           this.products = [...this.products, ...res];

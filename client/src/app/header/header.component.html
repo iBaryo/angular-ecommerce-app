@@ -16,7 +16,7 @@
     </button>
   </div>
   <div class="header-container__middle">
-    <h3 routerLink="/">Eccom</h3>
+    <h3 routerLink="/"><img class="brand-logo" src="{{_brand.imgSrc}}" />{{_brand.name}}</h3>
   </div>
   <div class="header-container__right">
     <ng-container>
@@ -142,7 +142,7 @@
 <div [className]="isMenuOpen ? 'side-menu show' : 'side-menu'">
   <i nz-icon nzType="close" nzTheme="outline" (click)="toggleMenu()"></i>
   <div class="side-menu__content">
-    <h2 routerLink="/" (click)="toggleMenu()">Eccom</h2>
+    <h2 routerLink="/" (click)="toggleMenu()">{{_brand.name}}</h2>
     <nav>
       <ul>
         <li routerLink="/" (click)="toggleMenu()">Home</li>

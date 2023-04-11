@@ -73,14 +73,15 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  addToCart(): void {
-    this._cart.addProduct({
+  addToCart() {
+    return this._cart.addProduct({
       id: this.id,
       price: this.product.price,
       quantity: this.quantity,
       image: this.product.image,
       title: this.product.title,
       maxQuantity: this.product.quantity,
+      category: this.product.category
     });
   }
 }

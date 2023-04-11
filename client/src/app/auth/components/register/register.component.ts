@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from '../../../services/api.service';
+import {BrandService} from "../../../services/brand.service";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _api: ApiService,
     private _auth: AuthService,
-    private _router: Router
+    private _router: Router,
+    public _brand: BrandService
   ) {}
 
   ngOnInit(): void {}

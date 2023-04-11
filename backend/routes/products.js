@@ -4,7 +4,7 @@ const db = require("../database/db");
 
 // GET ALL PRODUCTS
 router.get("/", async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 10, category } = req.query;
 
   let startValue;
   let endValue;
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   db.query(
     `SELECT p.id, p.title, p.image, p.price, p.short_desc, p.quantity,
         c.title as category FROM products p JOIN categories c ON
-            c.id = p.cat_id LIMIT ${startValue}, ${limit}`,
+            c.title LIKE "${category || '%'}" AND c.id = p.cat_id LIMIT ${startValue}, ${limit}`,
     (err, results) => {
       if (err) console.log(err);
       else res.json(results);
